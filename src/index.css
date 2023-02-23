@@ -1,0 +1,62 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.App{
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+    height: 100%;
+}
+
+p{font-size:1rem ;}
+    h1{
+text-align: center;
+    color: hsla(235, 57%, 60%, 1);}
+    
+     h2{
+        color: hsla(235, 57%, 60%, 0.6);}
+    
+    
+    .fixed-input{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    
+    .inputs-section {
+        display: flex;
+        flex-direction: column;
+        height: 70%;
+        gap: 20px;
+        padding: 20px 30px;
+    }
+    
+ 
+ .add-btn{
+     border: none;
+     border-radius: 5px;
+     width: 65px;
+     position: absolute;
+     left: px;
+     margin: 5px 0px 15px;
+     font-size: 2.5rem;
+     font-weight: bold;
+     background-color: hsla(235, 57%, 60%, 1);
+     color: white;
+ transition: 0.3s;}
+ 
+ .add-btn:active{
+     font-size: 2rem;
+    color: hsla(235, 57%, 60%, 1);
+     background-color: white;}
+ 
+ .add-btn:hover{
+     font-size: 2.3rem;
+         color: hsla(235, 57%, 60%, 1);
+          background-color: white;}
+  

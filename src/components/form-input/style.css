@@ -1,0 +1,76 @@
+
+.inputs-section {
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    gap: 20px;
+    padding: 20px 30px;
+}
+
+
+.add-btn{
+ border: none;
+ border-radius: 5px;
+ width: 65px;
+ position: absolute;
+ right: 66px;
+ margin: 5px 0px 15px;
+ font-size: 2.5rem;
+ font-weight: bold;
+ background-color: hsla(235, 57%, 60%, 1);
+ color: white;
+transition: 0.3s;}
+
+.add-btn:active{
+ font-size: 2rem;
+color: hsla(235, 57%, 60%, 1);
+ background-color: white;}
+
+.add-btn:hover{
+ font-size: 2.3rem;
+     color: hsla(235, 57%, 60%, 1);
+      background-color: white;}
+
+label{display: flex;
+    gap: 70px;
+    margin-right: 60px;
+    justify-content: flex-start;}
+
+.inputs{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 11px;
+    height: 65px;
+}
+
+.inputs > .input-text{
+    width: 70%;
+}
+
+.inputs > .price{
+    width: 40%;
+}
+
+input{
+    height: 30%;
+    padding: 5px;
+}
+
+p{
+    
+ font-size:1rem ;
+}
+
+#delete{ 
+    font-weight: bold;
+    color: red;
+    font-size: 2.3rem;
+    transition: 0.3s;
+}
+#delete:hover {
+    font-size: 2.2rem;
+}
+#delete:active{ 
+    font-size: 2rem;
+}
