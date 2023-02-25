@@ -1,133 +1,138 @@
 import InputForm from "../form-input";
-import { useState } from "react";
-import Dexie, { Table } from 'dexie';
+import { useState, useEffect } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
+import { db1 } from "../db";
+import { Button, ButtonContainer } from "./styled";
 
 
-export interface InputsDb {          
-  id?: number;
-  name: string;
-  price: any ;
-}
-
-export class MySubClassedDexie extends Dexie {
-  // 'friends' is added by dexie when declaring the stores()
-  // We just tell the typing system this is the case
-  FixedBudgetInputs!: Table<InputsDb>; 
-
-  constructor() {
-    super('FixedBudgetDatabase');
-    this.version(1).stores({
-      FixedBudgetInputs: '++id, name, price' // Primary key and indexed props
-    });
-  }
-}
-
- const db1 = new MySubClassedDexie();
- const  {FixedBudgetInputs} = db1
+ const  {FixedBudgetInputs,Analysis} = db1
 
 const FixedBudget = () => {
     const [total, setTotal] = useState<number>()
     const [fixedAmount, setFixedAmount] = useState<any>('')
     const [analysis, setAnalysis] = useState<string>('')
 
- const data  = useLiveQuery(() => FixedBudgetInputs.toArray() ,[])
+    // should be moved to welcome page to give time to initialize database
+ useEffect( () => {
+    let check = ()=>{
+     Analysis.toArray().then((arr)=> {
+      if(arr.length === 0){ 
+        Analysis.put({
+          id:0,
+          fixedInput: 0,
+          analysis: "",
+          total: 0,
+        });
+        //  setFixedAmount(arr[0].fixedInput)
+         console.log('first time has been set')
+       }
+    })
 
-//  let arr = ['w',2,2,3,3]
-//  let localData = JSON.stringify(arr)
-//  localStorage.setItem('data', localData)
-//  console.log(localStorage)
-//  let x = localStorage.getItem('data')
-//  let parsedlocalData = JSON.parse(x)
-// console.log(parsedlocalData)
+    FixedBudgetInputs.toArray().then((arr)=> {
+      if(arr.length === 0){ 
+        FixedBudgetInputs.bulkPut([{
+          name:'',
+          price:0
+        },
+        {
+          name:'',
+          price:0
+        }]);
+        //  setFixedAmount(arr[0].fixedInput)
+         console.log('first time has been set')
+       }
+    })
 
-// logic for add btn
-const handleAdd = async () =>{   
-    await FixedBudgetInputs.add({name:'',price:''})
-        }
+    }
 
-    
+    return () => {
+       check()
+    }
+  }, [])
+  
+  // live query for inputs data
+  const data  = useLiveQuery(() => FixedBudgetInputs.toArray() ,[])
+  // live query analysis data
+  useLiveQuery(() => Analysis.toArray().then((arr)=> {
+setFixedAmount(arr[0].fixedInput)
+setAnalysis(arr[0].analysis)
+setTotal(arr[0].total)
+  }))
 
-       const handleFixedChange =  async (e:any)=>{
+ 
+       const handleFixedChange = async (e:any)=>{
 const value = e.target.value *1
-setFixedAmount((value))
-
-// // const allData = await FixedBudgetInputs.toArray()
-// const allData  = useLiveQuery(() => FixedBudgetInputs.filter(x=> x.price))
-// const allPrices :InputsDb = await  allData.map(data=> data.price * 1);
-// //running the simultaneous add up functions 
-// let total = allPrices.reduce((a,b)=> a + b, 0);
-//  setTotal(total)
-// //logic for switch result
-// if(fixedAmount - total > 0){    
-// setAnalysis(`Your Budget balance is ${fixedAmount - total}`)
-// }
-
-// else if(fixedAmount - total < 0){
-// setAnalysis(`Your expenses have exceeded your budget`)
-// }
-
-// else   if(fixedAmount - total == 0){
-// setAnalysis(`Your Budget is exactly equal to your expenses`)
-// }
-
-console.log(fixedAmount,total)
-
+  await Analysis.update(0,{fixedInput: value});
 }
 
 // handleChange for both inputs
-       const handleChange = async (e:any,id:any)=>{
-        const {name , value} = e.target;
+       const handleChange = (e:any,id:any)=>{
+      const {name , value} = e.target;
 
-        const allData = await FixedBudgetInputs.toArray()
-
-// // change and add up for prices
-//         if (name ===  'price'){
-//           // using the dexie update api to make an update directly to the database
-//    FixedBudgetInputs.update(id, {price: value});
-
-//    const allData = await FixedBudgetInputs.toArray()
-//    const allPrices = allData.map(data=> data.price * 1);
-
-//    let total = allPrices.reduce((a,b)=> a + b, 0);
-//  setTotal(total)
-//     console.log(fixedAmount,total)
-
-    
-
-    //  //logic for switch result
-    //    if(fixedAmount - total > 0){    
-    // setAnalysis(`Your Budget balance is ${fixedAmount - total}`)
-    //    }
-    
-    //   else if(fixedAmount - total < 0){
-    // setAnalysis(`Your expenses have exceeded your budget`)
-    //    }
-    
-    // else   if(fixedAmount - total == 0){
-    // setAnalysis(`Your Budget is exactly equal to your expenses`)
-    //    }
-
-
-        if (name === 'name'){
-    await FixedBudgetInputs.update(id, {name: value});
+// change and add up for prices
+        if (name ===  'price'){
+        // using the dexie update api to make an update directly to the database
+   FixedBudgetInputs.update(id, {price: value});
+  addUp()
+}
+        else if (name === 'name'){
+   FixedBudgetInputs.update(id, {name: value});
     }
-            
-        }
-
-
+}
 
 // logic for delete button
     const handleDelete = async (id:any)=>{
     await  FixedBudgetInputs.delete(id)
+    addUp()
+    }
+
+// logic for add btn
+const handleAdd = async () =>{   
+  await FixedBudgetInputs.add({name:'',price:''})
+      }
+
+    const addUp = ()=>{
+      let allPrices
+     FixedBudgetInputs.toArray().then((arr)=> {
+       if(arr){
+         allPrices = arr.map(data=> data.price * 1)
+         let total = allPrices.reduce((a,b)=> a + b, 0);
+       Analysis.update(0, {total: total});
+
+            if(fixedAmount - total > 0){  
+      Analysis.update(0, {analysis: `Your Budget balance is N${fixedAmount - total}`});
+       }
+           else if(fixedAmount - total < 0){ 
+      Analysis.update(0, {analysis: `Your expenses have exceeded your budget`});
+       }
+    
+    else   if(fixedAmount - total == 0){
+      Analysis.update(0, {analysis: `Your Budget is exactly equal to your expenses`});
+       }
+       }})
     }
 
   
 
-    return ( <div  className='inputs-section'>
+    return ( <div>
+
+      <div className="welcome">
+        <h1>Welcome to Budgetr</h1>
+        <div>
+          <h2>Tell us your name</h2>
+          <input type="text" placeholder="Your name is..."/>
+        </div>
+        <div>
+          <button>Get started</button>
+        </div>
+
+      </div>
+      <div className='inputs-section'>
+
+      
         <div className="fixed-input">
              <h1>Enter your Fixed budget</h1>
-             <input type="number" name="fixed" required onChange={(e)=>handleFixedChange(e)}value={fixedAmount} />
+             <input type="number" className="fixed-input" name="fixed" required onChange={(e)=>handleFixedChange(e)}value={fixedAmount} placeholder='Enter Fixed Budget amount' />
         </div>
        
         <InputForm  data={data} handleChange={handleChange} handleAdd={handleAdd} handleDelete={handleDelete}/>
@@ -136,6 +141,15 @@ console.log(fixedAmount,total)
             <p>Your total expenses are N{total}</p>
             <p>{analysis}</p>
         </div>
+</div>
+        <ButtonContainer>
+          <Button>download as pdf</Button>
+          <Button>share</Button>
+        </ButtonContainer>
+          
+        
+
+
         
     </div> );
 }

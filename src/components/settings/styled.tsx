@@ -10,7 +10,7 @@ width: 100%;
     font-size: 1em;
     height: 100%;
     padding: 1.25em 1em;
-    background-color:${props => (props.primary ? "hsla(235, 57%, 65%, .8)" : "hsla(235, 57%, 60%, .9)")};
+    background-color:${props => (props.primary ? "hsla(235, 57%, 65%, 1)" : "hsla(235, 57%, 60%, 1)")};
    color: white;
    cursor:pointer;
    transition:.3s;

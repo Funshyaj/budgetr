@@ -1,5 +1,5 @@
 import './style.css';
-import { InputsDb } from '../fixed-budget';
+import { InputsDb } from '../db';
 
 export type props ={
      data ?: InputsDb[] ;
@@ -11,7 +11,7 @@ export type props ={
 const InputForm:React.FC<props> = ({data,handleChange,handleAdd,handleDelete}) => {
 
 
-    return ( <div>
+    return ( <div className='mapped-inputs'>
 
 {/* the inputs  */}
  {data?.map(({name, price ,id},index)=>(

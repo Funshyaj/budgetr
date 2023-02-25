@@ -7,13 +7,16 @@
     padding: 20px 30px;
 }
 
+.mapped-inputs{
+    padding: 0 10px;
+}
 
 .add-btn{
  border: none;
  border-radius: 5px;
  width: 65px;
  position: absolute;
- right: 66px;
+ right: 76px;
  margin: 5px 0px 15px;
  font-size: 2.5rem;
  font-weight: bold;

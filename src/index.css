@@ -26,11 +26,38 @@ text-align: center;
     .fixed-input{
         display: flex;
         flex-direction: column;
+        
     }
+    .fixed-input > input {
+        width: 50%;
+        font-size: 1.2rem;
+        margin: 0 auto;
+        padding: 10px 10px 5px;
+        border: none;
+        text-align: center;
+        border-bottom: 1px solid black;
+        transition: .2s;
+    }
+
+    .fixed-input > input:focus {
+        border-bottom: 2px solid hsla(235, 57%, 60%, 0.9);
+    outline: none;}
     
 .analysis{
     padding:50px 0px 10px ;
     color: hsla(235, 57%, 60%, 1) ;
+    text-align: center;
+}
+
+.welcome{
+    position: fixed;
+    height:100%;
+    left:0;
+    right: 0;
+    top:0;
+    bottom:0;
+    background-color:white;
+    z-index: 9999;
 }
     
 
