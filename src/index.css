@@ -14,6 +14,7 @@ body {
 }
 
 p{font-size:1rem ;}
+
     h1{
 text-align: center;
     color: hsla(235, 57%, 60%, 1);}
@@ -27,36 +28,10 @@ text-align: center;
         flex-direction: column;
     }
     
+.analysis{
+    padding:50px 0px 10px ;
+    color: hsla(235, 57%, 60%, 1) ;
+}
     
-    .inputs-section {
-        display: flex;
-        flex-direction: column;
-        height: 70%;
-        gap: 20px;
-        padding: 20px 30px;
-    }
-    
- 
- .add-btn{
-     border: none;
-     border-radius: 5px;
-     width: 65px;
-     position: absolute;
-     left: px;
-     margin: 5px 0px 15px;
-     font-size: 2.5rem;
-     font-weight: bold;
-     background-color: hsla(235, 57%, 60%, 1);
-     color: white;
- transition: 0.3s;}
- 
- .add-btn:active{
-     font-size: 2rem;
-    color: hsla(235, 57%, 60%, 1);
-     background-color: white;}
- 
- .add-btn:hover{
-     font-size: 2.3rem;
-         color: hsla(235, 57%, 60%, 1);
-          background-color: white;}
+
   

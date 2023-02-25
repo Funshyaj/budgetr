@@ -1,13 +1,10 @@
 import './style.css';
-export type Inputs = {
-    name:string;
-    price:number;
-}
+import { InputsDb } from '../fixed-budget';
 
 export type props ={
-     data : Inputs[];
-     handleChange : (e:React.ChangeEvent<HTMLInputElement>, index:number)=>void;
-     handleDelete: (index:number)=>void;
+     data ?: InputsDb[] ;
+     handleChange : (e:React.ChangeEvent<HTMLInputElement>, id?:number)=>void;
+     handleDelete: (index?:number)=>void;
      handleAdd : ()=>void;
 }
 
@@ -17,12 +14,12 @@ const InputForm:React.FC<props> = ({data,handleChange,handleAdd,handleDelete}) =
     return ( <div>
 
 {/* the inputs  */}
- {data.map((input,index)=>(
+ {data?.map(({name, price ,id},index)=>(
      <div className="inputs" key={index}>
-       <input type="text" className='input-text' name='name' onChange={(e)=>handleChange(e,index)} value={input.name} />
+       <input type="text" className='input-text' name='name' onChange={(e)=>handleChange(e,id)} value={name} />
        <p>N</p>
-        <input type="number" className="price" name='price' onChange={(e)=>handleChange(e,index)} value={input.price}/>
-        <p id="delete" onClick={()=>handleDelete(index)}>&times;</p>
+        <input type="number" className="price" name='price' onChange={(e)=>handleChange(e,id)} value={price}/>
+        <p id="delete" onClick={()=>handleDelete(id)}>&times;</p>
     </div>
 ))} 
 {/* end of inputs */}

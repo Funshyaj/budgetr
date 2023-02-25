@@ -1,10 +1,10 @@
 import InputForm from "../form-input";
 import { useState } from "react";
-import { Inputs } from "../form-input";
+import { InputsDb } from "../fixed-budget";
 
 const NonFixedBudget = () => {
     const [total, setTotal] = useState<number>()
-    const [data, setdata] = useState<Inputs[]>(
+    const [data, setdata] = useState<InputsDb[]>(
         [{name:'', price:0 },
          {name:'', price:0}  
         ])
