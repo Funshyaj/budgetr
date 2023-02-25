@@ -4,8 +4,10 @@ export interface Analysis {
   id?:0;
   fixedInput: number;
   analysis:string;
-  total:number
+  total:number;
+  UserName:'';
 }
+
 export interface InputsDb {          
   id?: number;
   name: string;
@@ -17,7 +19,7 @@ class MySubClassedDexie1 extends Dexie {
   // 'friends' is added by dexie when declaring the stores()
   // We just tell the typing system this is the case
   FixedBudgetInputs!: Table<InputsDb>; 
-  Analysis!: Table<Analysis>; 
+  Analyses!: Table<Analysis>; 
 
   constructor() {
     super('FixedBudgetDatabase');
@@ -26,7 +28,7 @@ class MySubClassedDexie1 extends Dexie {
     })
     
     this.version(2).stores({
-     Analysis : 'id, fixedInput, analysis, total' // Primary key and indexed props
+     Analyses : 'id, fixedInput, analysis, total' // Primary key and indexed props
     });
   }
 }
@@ -38,6 +40,8 @@ class MySubClassedDexie2 extends Dexie {
   Analysis!: Table<{
     id?:0;
     total:number;
+    UserName:''
+
   }>
   constructor() {
     super('NonFixedBudgetDatabase');

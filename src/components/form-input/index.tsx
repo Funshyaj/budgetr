@@ -1,5 +1,5 @@
 import './style.css';
-import { InputsDb } from '../db';
+import { InputsDb } from '../../db';
 
 export type props ={
      data ?: InputsDb[] ;

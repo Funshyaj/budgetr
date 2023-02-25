@@ -1,68 +1,33 @@
 import InputForm from "../form-input";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
-import { db1 } from "../db";
+import { db1 } from "../../db";
 import { Button, ButtonContainer } from "./styled";
 
 
- const  {FixedBudgetInputs,Analysis} = db1
+ const  {FixedBudgetInputs,Analyses} = db1
 
 const FixedBudget = () => {
     const [total, setTotal] = useState<number>()
     const [fixedAmount, setFixedAmount] = useState<any>('')
     const [analysis, setAnalysis] = useState<string>('')
+    const [UserName, setUserName] = useState<string>('')
 
-    // should be moved to welcome page to give time to initialize database
- useEffect( () => {
-    let check = ()=>{
-     Analysis.toArray().then((arr)=> {
-      if(arr.length === 0){ 
-        Analysis.put({
-          id:0,
-          fixedInput: 0,
-          analysis: "",
-          total: 0,
-        });
-        //  setFixedAmount(arr[0].fixedInput)
-         console.log('first time has been set')
-       }
-    })
-
-    FixedBudgetInputs.toArray().then((arr)=> {
-      if(arr.length === 0){ 
-        FixedBudgetInputs.bulkPut([{
-          name:'',
-          price:0
-        },
-        {
-          name:'',
-          price:0
-        }]);
-        //  setFixedAmount(arr[0].fixedInput)
-         console.log('first time has been set')
-       }
-    })
-
-    }
-
-    return () => {
-       check()
-    }
-  }, [])
-  
+   
   // live query for inputs data
   const data  = useLiveQuery(() => FixedBudgetInputs.toArray() ,[])
   // live query analysis data
-  useLiveQuery(() => Analysis.toArray().then((arr)=> {
+  useLiveQuery(() => Analyses.toArray().then((arr)=> {
 setFixedAmount(arr[0].fixedInput)
 setAnalysis(arr[0].analysis)
 setTotal(arr[0].total)
+setUserName(arr[0].UserName)
   }))
 
  
        const handleFixedChange = async (e:any)=>{
 const value = e.target.value *1
-  await Analysis.update(0,{fixedInput: value});
+  await Analyses.update(0,{fixedInput: value});
 }
 
 // handleChange for both inputs
@@ -97,40 +62,29 @@ const handleAdd = async () =>{
        if(arr){
          allPrices = arr.map(data=> data.price * 1)
          let total = allPrices.reduce((a,b)=> a + b, 0);
-       Analysis.update(0, {total: total});
+       Analyses.update(0, {total: total});
 
             if(fixedAmount - total > 0){  
-      Analysis.update(0, {analysis: `Your Budget balance is N${fixedAmount - total}`});
+      Analyses.update(0, {analysis: `Your Budget balance is N${fixedAmount - total}`});
        }
            else if(fixedAmount - total < 0){ 
-      Analysis.update(0, {analysis: `Your expenses have exceeded your budget`});
+      Analyses.update(0, {analysis: `Your expenses have exceeded your budget`});
        }
     
     else   if(fixedAmount - total == 0){
-      Analysis.update(0, {analysis: `Your Budget is exactly equal to your expenses`});
+      Analyses.update(0, {analysis: `Your Budget is exactly equal to your expenses`});
        }
        }})
     }
 
-  
 
     return ( <div>
 
-      <div className="welcome">
-        <h1>Welcome to Budgetr</h1>
-        <div>
-          <h2>Tell us your name</h2>
-          <input type="text" placeholder="Your name is..."/>
-        </div>
-        <div>
-          <button>Get started</button>
-        </div>
-
-      </div>
       <div className='inputs-section'>
 
       
         <div className="fixed-input">
+          <h2>Welcome, {UserName}</h2>
              <h1>Enter your Fixed budget</h1>
              <input type="number" className="fixed-input" name="fixed" required onChange={(e)=>handleFixedChange(e)}value={fixedAmount} placeholder='Enter Fixed Budget amount' />
         </div>
