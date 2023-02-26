@@ -1,4 +1,5 @@
-import { useState } from 'react';import Fixed from '../../components/fixed-budget/index';
+import { useState } from 'react';
+import Fixed from '../../components/fixed-budget/index';
 import NonFixedBudget from '../../components/non-fixed-budget/index';
 import Settings from '../../components/settings/index';
 
@@ -18,7 +19,6 @@ const Budgetr= () => {
           }
 
     return ( <div>
-        
        <header>
    <Settings   
 handleFixedSwitch={handleFixedSwitch}
@@ -26,7 +26,7 @@ handleNonFixedSwitch ={handleNonFixedSwitch}
    />
  </header>
       <div className='Main-ui'>
-       {switcher  === 'fixed' ?<Fixed/> :<NonFixedBudget />} 
+       {switcher  === 'fixed' ?  <Fixed/> :<NonFixedBudget/> } 
     </div>
     </div> );
 }

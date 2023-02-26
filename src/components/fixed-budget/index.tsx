@@ -1,7 +1,7 @@
 import InputForm from "../form-input";
 import { useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
-import { db1 } from "../../db";
+import { db1 } from "../db";
 import { Button, ButtonContainer } from "./styled";
 
 
@@ -17,6 +17,7 @@ const FixedBudget = () => {
   // live query for inputs data
   const data  = useLiveQuery(() => FixedBudgetInputs.toArray() ,[])
   // live query analysis data
+ 
   useLiveQuery(() => Analyses.toArray().then((arr)=> {
 setFixedAmount(arr[0].fixedInput)
 setAnalysis(arr[0].analysis)
@@ -24,7 +25,8 @@ setTotal(arr[0].total)
 setUserName(arr[0].UserName)
   }))
 
- 
+
+
        const handleFixedChange = async (e:any)=>{
 const value = e.target.value *1
   await Analyses.update(0,{fixedInput: value});

@@ -1,8 +1,7 @@
 import InputForm from "../form-input";
 import { useState} from "react";
-import { db2 } from "../../db";
+import { db2 } from "../db";
 import { useLiveQuery } from "dexie-react-hooks";
-
 
 
 const  {NonFixedBudgetInputs, Analysis} = db2
@@ -11,20 +10,21 @@ const NonFixedBudget = () => {
     const [total, setTotal] = useState<number>()
     const [UserName, setUserName] = useState<string>('')
 
-    
-
+  
 //   querying data for fast reflection
   const data  = useLiveQuery(() => NonFixedBudgetInputs.toArray() ,[])
-  useLiveQuery(() => Analysis.toArray().then((arr)=> {
-    setTotal(arr[0].total)
-setUserName(arr[0].UserName)
-      }))
+ 
 
+useLiveQuery(() => Analysis.toArray().then((arr)=> {
+      setTotal(arr[0].total)
+  setUserName(arr[0].UserName)
+ }))
 
 // handleChange for inputs
 const handleChange = async (e:any,id:any)=>{
     const {name , value} = e.target;
-   
+
+    
   // change and add up for prices
           if (name ===  'price'){
           // using the dexie update api to make an update directly to the database
