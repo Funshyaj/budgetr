@@ -2,7 +2,7 @@ import InputForm from "../form-input";
 import { useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db1 } from "../../../../db";
-import { Button, ButtonContainer } from "./styled";
+
 
 
  const  {FixedBudgetInputs,Analyses} = db1
@@ -98,14 +98,6 @@ const handleAdd = async () =>{
             <p>{analysis}</p>
         </div>
 </div>
-        <ButtonContainer>
-          <Button>download as pdf</Button>
-          <Button>share</Button>
-        </ButtonContainer>
-          
-        
-
-
         
     </div> );
 }

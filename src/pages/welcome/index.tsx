@@ -88,24 +88,26 @@ const handleModal = ()=> setModal(false)
           {modal && <Modal setModal={handleModal} />}
   
       <div className="welcome">
+        <div className='intro-form'>
         <h1>Welcome to Budgetr</h1>
         <div className='welcome-form'>
           <form onSubmit={(e)=>{
 e.preventDefault()
-// addName();
-// setChange(true);
+addName();
+setChange(true);
 console.log(UserName)}}>
       <input type="text" placeholder="Enter your name" value={UserName} onChange={handleChange} required/>
 <button type='submit'>Proceed</button>
    </form>
         </div>
+        </div>
 
-        <div>
+        <div className='need-to-know'>
       <h2>Things to know</h2>
       <ul>
         <li>feels good</li>
-        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-          <li> Quibusdam consectetur quae excepturi ratione ut et est eum nobis odit? Eius,</li>
+        <li>Lorem ipsum dolor sit amet consectetur.</li>
+          <li> Quibusdam consectetur quae excepturi</li>
       </ul>
         </div>
 

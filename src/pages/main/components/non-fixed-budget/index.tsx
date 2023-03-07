@@ -4,6 +4,7 @@ import { db2 } from "../../../../db";
 import { useLiveQuery } from "dexie-react-hooks";
 
 
+
 const  {NonFixedBudgetInputs, Analysis} = db2
 
 const NonFixedBudget = () => {
@@ -59,9 +60,6 @@ const handleChange = async (e:any,id:any)=>{
   
 
     return ( <div>
-
-    
-    
     <div  className='inputs-section'>
         
     <h2>Welcome, {UserName}</h2>

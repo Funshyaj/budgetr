@@ -20,7 +20,7 @@ width: 100%;
 
 
 // Create a Wrapper component that'll render a <section> tag with some styles
-export const Wrapper = styled.section`
+export const Wrapper = styled.header`
 position: fixed;
 top: 0;
 right:0;

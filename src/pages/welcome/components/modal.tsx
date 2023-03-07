@@ -1,3 +1,5 @@
+import applogo from "../../../assets/logo.png";
+
 interface Props{
     setModal:()=>void
 }
@@ -9,7 +11,7 @@ const Modal: React.FC<Props> = ({setModal}) => {
 
     return ( <div className="welcome-modal">
         <div>
-            <img src="" alt="logo" />
+            <div className="img"><img src={applogo} alt="logo" /></div>
             <h1>Budgetr</h1>
             <p>Don't overspend, Use budgetr!</p>
         </div>

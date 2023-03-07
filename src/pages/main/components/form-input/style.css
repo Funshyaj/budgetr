@@ -29,11 +29,6 @@ transition: 0.3s;}
 color: hsla(235, 57%, 60%, 1);
  background-color: white;}
 
-.add-btn:hover{
- font-size: 2.3rem;
-     color: hsla(235, 57%, 60%, 1);
-      background-color: white;}
-
 label{display: flex;
     gap: 70px;
     margin-right: 60px;
@@ -57,7 +52,17 @@ label{display: flex;
 
 input{
     height: 30%;
-    padding: 5px;
+    padding:8px 5px;
+    outline: none;
+border-radius: 5px;
+border: 1px solid black;
+font-size: 16px;
+}
+
+input:focus{
+border-color:hsla(235, 57%, 60%, 1);
+color: hsla(235, 57%, 60%, 1);
+
 }
 
 p{
@@ -71,9 +76,7 @@ p{
     font-size: 2.3rem;
     transition: 0.3s;
 }
-#delete:hover {
-    font-size: 2.2rem;
-}
+
 #delete:active{ 
     font-size: 2rem;
 }

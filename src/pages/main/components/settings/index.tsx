@@ -13,8 +13,6 @@ const Settings = ({handleFixedSwitch,handleNonFixedSwitch}:click) => {
 
 
 return(
-
-  <div>
     <Wrapper>
       <Button  primary={color1} onClick={()=>{
         handleFixedSwitch()
@@ -26,10 +24,6 @@ return(
         setColor1(false)
         setColor2(true)}}>Non Fixed</Button>
       </Wrapper>
-      
-    
-  </div>
-
 );
 }
  
