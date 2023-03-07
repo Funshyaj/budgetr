@@ -1,13 +1,18 @@
 import { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { db1,db2 } from '../../db';
+import Modal from './components/modal';
 
  const  {FixedBudgetInputs, Analyses} = db1
 const  {NonFixedBudgetInputs, Analysis} = db2
 
+interface States{
+  setModal:()=>Boolean
+}
 const Welcome = () => {
   const [UserName, setUserName] = useState<string>('')
   const [change, setChange] = useState(false)
+  const [modal, setModal] = useState<Boolean>(true)
 
 
      // initialize database only once
@@ -68,6 +73,8 @@ NonFixedBudgetInputs.bulkPut([{
 }
 
 const handleChange = (e:React.ChangeEvent<HTMLInputElement>)=>setUserName(e.target.value)
+
+const handleModal = ()=> setModal(false)
  
   // function to add User name
   const addName = ()=>{
@@ -78,25 +85,28 @@ const handleChange = (e:React.ChangeEvent<HTMLInputElement>)=>setUserName(e.targ
 
         return ( <div>
           {change && (<Navigate to='/main'/>)}
+          {modal && <Modal setModal={handleModal} />}
   
       <div className="welcome">
         <h1>Welcome to Budgetr</h1>
-        <div>
-          <h2>Tell us your name</h2>
-
-          <form onSubmit={()=>{
-addName();
-setChange(true);
+        <div className='welcome-form'>
+          <form onSubmit={(e)=>{
+e.preventDefault()
+// addName();
+// setChange(true);
 console.log(UserName)}}>
-      <input type="text" placeholder="Your name is..." value={UserName} onChange={handleChange} required/>
-<button type='submit'>
-Get started
-</button>
+      <input type="text" placeholder="Enter your name" value={UserName} onChange={handleChange} required/>
+<button type='submit'>Proceed</button>
    </form>
         </div>
 
         <div>
-        <button onClick={()=>init()}>Initialize Database</button>
+      <h2>Things to know</h2>
+      <ul>
+        <li>feels good</li>
+        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+          <li> Quibusdam consectetur quae excepturi ratione ut et est eum nobis odit? Eius,</li>
+      </ul>
         </div>
 
       </div>
