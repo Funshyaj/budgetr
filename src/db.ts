@@ -16,8 +16,6 @@ export interface InputsDb {
 
 
 class MySubClassedDexie1 extends Dexie {
-  // 'friends' is added by dexie when declaring the stores()
-  // We just tell the typing system this is the case
   FixedBudgetInputs!: Table<InputsDb>; 
   Analyses!: Table<Analysis>; 
 
@@ -34,8 +32,6 @@ class MySubClassedDexie1 extends Dexie {
 }
 
 class MySubClassedDexie2 extends Dexie {
-  // 'friends' is added by dexie when declaring the stores()
-  // We just tell the typing system this is the case
   NonFixedBudgetInputs!: Table<InputsDb>; 
   Analysis!: Table<{
     id?:0;

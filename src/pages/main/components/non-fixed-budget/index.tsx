@@ -1,6 +1,6 @@
 import InputForm from "../form-input";
 import { useState} from "react";
-import { db2 } from "../db";
+import { db2 } from "../../../../db";
 import { useLiveQuery } from "dexie-react-hooks";
 
 

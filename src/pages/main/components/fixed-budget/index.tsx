@@ -1,7 +1,7 @@
 import InputForm from "../form-input";
 import { useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
-import { db1 } from "../db";
+import { db1 } from "../../../../db";
 import { Button, ButtonContainer } from "./styled";
 
 

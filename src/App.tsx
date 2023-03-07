@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes,Route } from 'react-router-dom';
-import Budgetr from './pages/budgetr';
+import Main_Ui from './pages/main';
 import Welcome from './pages/welcome';
 
 
@@ -10,7 +10,7 @@ function App() {
   <div className="App">
     <Routes>
       <Route path='/' element={<Welcome/>} />
-      <Route path='/main' element={<Budgetr/>} />
+      <Route path='/main' element={<Main_Ui/>} />
     </Routes>
     </div>
 

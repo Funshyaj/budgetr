@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Link,Navigate,redirect } from 'react-router-dom';
-import { db1,db2 } from '../../components/db';
+import { Navigate } from 'react-router-dom';
+import { db1,db2 } from '../../db';
 
  const  {FixedBudgetInputs, Analyses} = db1
 const  {NonFixedBudgetInputs, Analysis} = db2

@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import Fixed from '../../components/fixed-budget/index';
-import NonFixedBudget from '../../components/non-fixed-budget/index';
-import Settings from '../../components/settings/index';
+import Fixed from './components/fixed-budget';
+import NonFixedBudget from './components/non-fixed-budget';
+import Settings from './components/settings/index';
 
 type Set = 'fixed'|'non-fixed';
  
-const Budgetr= () => {
+const Main_Ui= () => {
   const [switcher, setSwitcher] = useState<Set>('fixed');
 
     //function to switch to fixed
@@ -31,4 +31,4 @@ handleNonFixedSwitch ={handleNonFixedSwitch}
     </div> );
 }
  
-export default Budgetr;
+export default Main_Ui;
