@@ -2,11 +2,10 @@ import applogo from "../../../assets/logo.png";
 
 interface Props{
     setModal:()=>void
+    init:()=>void
 }
 
-const Modal: React.FC<Props> = ({setModal}) => {
-
-    // onClick={()=>init()
+const Modal: React.FC<Props> = ({setModal,init}) => {
 
 
     return ( <div className="welcome-modal">
@@ -16,7 +15,10 @@ const Modal: React.FC<Props> = ({setModal}) => {
             <p>Don't overspend, Use budgetr!</p>
         </div>
         <div>
-            <button onClick={()=>setModal()}>Get started</button>
+            <button onClick={() => {
+                setModal();
+                init();
+            }}>Get started</button>
         </div>
     </div> );
 }

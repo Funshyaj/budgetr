@@ -17,58 +17,58 @@ const Welcome = () => {
 
      // initialize database only once
 const init = ()=> {
-  Analyses.toArray().then((arr)=> {
-    if(arr.length === 0){ 
-      Analyses.put({
-        id:0,
-        fixedInput: 0,
-        analysis: "",
-        total: 0,
-        UserName:''
-      });
-      console.log('local database has been initiallized ')
-     }
+//   Analyses.toArray().then((arr)=> {
+//     if(arr.length === 0){ 
+//       Analyses.put({
+//         id:0,
+//         fixedInput: 0,
+//         analysis: "",
+//         total: 0,
+//         UserName:''
+//       });
+//       console.log('local database has been initiallized ')
+//      }
 
-     else if(arr.length > 0){
-      console.log('db already exist')
-    } 
-  })
+//      else if(arr.length > 0){
+//       console.log('db already exist')
+//     } 
+//   })
 
-  FixedBudgetInputs.toArray().then((arr)=> {
-    if(arr.length === 0){ 
-      FixedBudgetInputs.bulkPut([{
-        name:'',
-        price:0
-      },
-      {
-        name:'',
-        price:0
-      }]);
-     }
-  });
+//   FixedBudgetInputs.toArray().then((arr)=> {
+//     if(arr.length === 0){ 
+//       FixedBudgetInputs.bulkPut([{
+//         name:'',
+//         price:0
+//       },
+//       {
+//         name:'',
+//         price:0
+//       }]);
+//      }
+//   });
 
-  Analysis.toArray().then((arr)=> {
-    if(arr.length === 0){ 
-      Analysis.put({
-        id:0,
-        total: 0,
-        UserName:''
-      });
-     }
-  });
+//   Analysis.toArray().then((arr)=> {
+//     if(arr.length === 0){ 
+//       Analysis.put({
+//         id:0,
+//         total: 0,
+//         UserName:''
+//       });
+//      }
+//   });
 
-NonFixedBudgetInputs.toArray().then((arr)=> {
-if(arr.length === 0){ 
-NonFixedBudgetInputs.bulkPut([{
-  name:'',
-  price:0
-},
-{
-  name:'',
-  price:0
-}]);
-}
-});
+// NonFixedBudgetInputs.toArray().then((arr)=> {
+// if(arr.length === 0){ 
+// NonFixedBudgetInputs.bulkPut([{
+//   name:'',
+//   price:0
+// },
+// {
+//   name:'',
+//   price:0
+// }]);
+// }
+// });
 
 }
 
@@ -85,7 +85,7 @@ const handleModal = ()=> setModal(false)
 
         return ( <div>
           {change && (<Navigate to='/main'/>)}
-          {modal && <Modal setModal={handleModal} />}
+          {modal && <Modal setModal={handleModal} init={init} />}
   
       <div className="welcome">
         <div className='intro-form'>
@@ -93,8 +93,8 @@ const handleModal = ()=> setModal(false)
         <div className='welcome-form'>
           <form onSubmit={(e)=>{
 e.preventDefault()
-addName();
-setChange(true);
+// addName();
+// setChange(true);
 console.log(UserName)}}>
       <input type="text" placeholder="Enter your name" value={UserName} onChange={handleChange} required/>
 <button type='submit'>Proceed</button>
