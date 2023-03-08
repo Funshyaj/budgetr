@@ -73,7 +73,7 @@ const handleAdd = async () =>{
       Analyses.update(0, {analysis: `Your expenses have exceeded your budget`});
        }
     
-    else   if(fixedAmount - total == 0){
+    else   if(fixedAmount - total === 0){
       Analyses.update(0, {analysis: `Your Budget is exactly equal to your expenses`});
        }
        }})

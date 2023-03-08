@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { Navigate } from 'react-router-dom';
 import { db1,db2 } from '../../db';
 import Modal from './components/modal';
@@ -6,9 +6,6 @@ import Modal from './components/modal';
  const  {FixedBudgetInputs, Analyses} = db1
 const  {NonFixedBudgetInputs, Analysis} = db2
 
-interface States{
-  setModal:()=>Boolean
-}
 const Welcome = () => {
   const [UserName, setUserName] = useState<string>('')
   const [change, setChange] = useState(false)

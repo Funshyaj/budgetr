@@ -6,7 +6,7 @@ import { Button, ButtonContainer } from "./components/button/Button";
 
 type Set = 'fixed'|'non-fixed';
  
-const Main_Ui= () => {
+const MainUi= () => {
   const [switcher, setSwitcher] = useState<Set>('fixed');
 
     //function to switch to fixed
@@ -36,4 +36,4 @@ handleNonFixedSwitch ={handleNonFixedSwitch}
     </div> );
 }
  
-export default Main_Ui;
+export default MainUi;
