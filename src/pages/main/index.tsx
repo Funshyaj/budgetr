@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Fixed from './components/fixed-budget';
 import NonFixedBudget from './components/non-fixed-budget';
 import Settings from './components/settings/index';
-import { Button, ButtonContainer } from "./components/button/Button";
+
 
 type Set = 'fixed'|'non-fixed';
  
@@ -29,10 +29,7 @@ handleNonFixedSwitch ={handleNonFixedSwitch}
        {switcher  === 'fixed' ?  <Fixed/> :<NonFixedBudget/> } 
     </div>
 
-    <ButtonContainer>
-          <Button>Download</Button>
-          <Button>Share</Button>
-        </ButtonContainer>
+    
     </div> );
 }
  

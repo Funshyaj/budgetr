@@ -7,16 +7,47 @@ padding: 1.25em 1em;
 gap:10px;
 align-items: center;
 justify-content: space-evenly;
+
+@media (min-width: 1024px) {
+    flex-direction: column;
+    margin-top: 190px;
+    gap:20px;
+  }
 `;
 
-export const Button = styled.button`
+ interface prop {
+    primary: boolean
+  }
+
+export const Button = styled.button<prop>`
 font-size: 1rem;
-padding: 12px 40px;
-background: hsla(235, 57%, 60%, 1);
+display:flex;
+gap:10px;
+align-items:center;
+padding:${props => (props.primary ? "20px 30px;" : "12px 30px;")};
+text-align:center;
+background-color:${props => (props.primary ? "hsla(235, 57%, 65%, 1)" : "#25D366")};
 border: none;
 border-radius: 5px;
 color: white;
 font-weight: bold;
+
+&:active {
+    background-color:${props => (props.primary ? "hsla(235, 57%, 55%, 1)" : "#25D360")};
+}
+
+@media (min-width: 1024px) {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding:${props => (props.primary ? "17px 30px;" : "12px 30px;")};
+    }
+
+
+
+
+
+
 `;
 
 

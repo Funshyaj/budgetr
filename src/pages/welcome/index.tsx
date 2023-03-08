@@ -80,7 +80,7 @@ const handleModal = ()=> setModal(false)
     } 
 
 
-        return ( <div>
+        return ( <div className='pc-bg'>
           {change && (<Navigate to='/main'/>)}
           {modal && <Modal setModal={handleModal} init={init} />}
   

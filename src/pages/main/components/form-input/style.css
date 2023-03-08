@@ -1,12 +1,3 @@
-
-.inputs-section {
-    display: flex;
-    flex-direction: column;
-    height: 70%;
-    gap: 20px;
-    padding: 20px 30px;
-}
-
 .mapped-inputs{
     padding: 0 10px;
 }
@@ -15,7 +6,6 @@
  border: none;
  border-radius: 5px;
  width: 65px;
- position: absolute;
  right: 76px;
  margin: 5px 0px 15px;
  font-size: 2.5rem;

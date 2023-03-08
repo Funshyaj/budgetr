@@ -2,6 +2,7 @@ import InputForm from "../form-input";
 import { useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db1 } from "../../../../db";
+import { Button, ButtonContainer } from "../button/Button";
 
 
 
@@ -82,20 +83,31 @@ const handleAdd = async () =>{
 
     return ( <div>
 
-      <div className='inputs-section'>
+      <div className='input'>
 
-      
+      <div className="username-side">
+         <h2>Welcome, {UserName}</h2>
+         
+         <div className="note">
+          Here you can make a budgegt based on a fixed amount and Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi animi illum totam quas delectus! Sequi eveniet, eligendi inventore assumenda excepturi velit itaque suscipit quaerat nulla vero cupiditate vel perspiciatis minima.
+         </div>
+         </div>
+      <div className="inputs-section">
         <div className="fixed-input">
-          <h2>Welcome, {UserName}</h2>
              <h1>Enter your Fixed budget</h1>
              <input type="number" className="fixed-input" name="fixed" required onChange={(e)=>handleFixedChange(e)}value={fixedAmount} placeholder='Enter Fixed Budget amount' />
         </div>
        
         <InputForm  data={data} handleChange={handleChange} handleAdd={handleAdd} handleDelete={handleDelete}/>
-
+      </div>
         <div className="analysis">
             <p>Your total expenses are N{total}</p>
             <p>{analysis}</p>
+
+            <ButtonContainer>
+          <Button primary={true}>Download</Button>
+          <Button primary={false}><img src="https://img.icons8.com/windows/32/000000/whatsapp--v1.png"/>Share</Button>
+        </ButtonContainer>
         </div>
 </div>
         

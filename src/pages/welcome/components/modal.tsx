@@ -1,4 +1,4 @@
-import applogo from "../../../assets/logo.png";
+import applogo from "../../../assets/budgetr-logo.png";
 
 interface Props{
     setModal:()=>void

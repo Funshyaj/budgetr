@@ -2,7 +2,7 @@ import InputForm from "../form-input";
 import { useState} from "react";
 import { db2 } from "../../../../db";
 import { useLiveQuery } from "dexie-react-hooks";
-
+import { Button, ButtonContainer } from "../button/Button";
 
 
 const  {NonFixedBudgetInputs, Analysis} = db2
@@ -60,16 +60,29 @@ const handleChange = async (e:any,id:any)=>{
   
 
     return ( <div>
-    <div  className='inputs-section'>
-        
-    <h2>Welcome, {UserName}</h2>
+    <div className='input'>
+
+    <div className="username-side">
+       <h2>Welcome, {UserName}</h2>
+       <div className="note">
+          Here you can make a budgegt based on a fixed amount and Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi animi illum totam quas delectus! Sequi eveniet, eligendi inventore assumenda excepturi velit itaque suscipit quaerat nulla vero cupiditate vel perspiciatis minima.
+         </div>
+       </div>
+    
+    <div className="inputs-section">
         <h1>Enter your budget items</h1>
         <InputForm  data={data} handleChange={handleChange} handleAdd={handleAdd} handleDelete={handleDelete}/>
-
-    </div>  <div className="analysis">
-            <p>Your total expenses are N{total}</p>
-        </div>
+    </div> 
     
+     <div className="analysis">
+            <p>Your total expenses are N{total}</p>
+
+            <ButtonContainer>
+          <Button primary={true}>Download</Button>
+          <Button primary={false}><img src="https://img.icons8.com/windows/32/000000/whatsapp--v1.png"/>Share</Button>
+        </ButtonContainer>
+        </div>
+    </div>
     </div>);
 }    
  
