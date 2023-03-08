@@ -102,9 +102,9 @@ console.log(UserName)}}>
         <div className='need-to-know'>
       <h2>Things to know</h2>
       <ul>
-        <li>feels good</li>
-        <li>Lorem ipsum dolor sit amet consectetur.</li>
-          <li> Quibusdam consectetur quae excepturi</li>
+        <li>This app works perfectly offline</li>
+        <li>You can share and download any budget you create</li>
+        <li>Budgetting makes your life more organized</li>
       </ul>
         </div>
 
