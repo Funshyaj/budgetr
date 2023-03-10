@@ -3,6 +3,9 @@ import { useState} from "react";
 import { db2 } from "../../../../db";
 import { useLiveQuery } from "dexie-react-hooks";
 import { Button, ButtonContainer } from "../button/Button";
+import PrintModal from "../printer/print-modal";
+import { WhatsappShareButton } from "react-share";
+
 
 
 const  {NonFixedBudgetInputs, Analysis} = db2
@@ -10,7 +13,7 @@ const  {NonFixedBudgetInputs, Analysis} = db2
 const NonFixedBudget = () => {
     const [total, setTotal] = useState<number>()
     const [UserName, setUserName] = useState<string>('')
-
+    const [show, setShow] = useState(false)
   
 //   querying data for fast reflection
   const data  = useLiveQuery(() => NonFixedBudgetInputs.toArray() ,[])
@@ -78,9 +81,16 @@ const handleChange = async (e:any,id:any)=>{
             <p>Your total expenses are N{total}</p>
 
             <ButtonContainer>
-          <Button primary={true}>Download</Button>
-          <Button primary={false}><img src="https://img.icons8.com/windows/32/000000/whatsapp--v1.png"/>Share</Button>
+          <Button onClick={()=>setShow(!show)} primary={true}><img src="https://img.icons8.com/ios/25/null/export.png"/>Export</Button>
+          <Button primary={false}>
+            <img src="https://img.icons8.com/ios/32/000000/whatsapp--v1.png"/>
+          <WhatsappShareButton url='https://funshyaj.github.io/budgetr' title="Budgetr" separator=" -Dont over spend!, use budgetr- ">Share</WhatsappShareButton>
+          </Button>
         </ButtonContainer>
+
+
+
+        {show && <PrintModal />}
         </div>
     </div>
     </div>);

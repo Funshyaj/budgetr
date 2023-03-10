@@ -16,9 +16,7 @@ const FixedBudget = () => {
     const [UserName, setUserName] = useState<string>('')
     const [show, setShow] = useState(false)
 
-    
-    const componentRef = useRef(null);
-
+  
    
   // live query for inputs data
   const data  = useLiveQuery(() => FixedBudgetInputs.toArray() ,[])
@@ -117,17 +115,7 @@ const handleAdd = async () =>{
           </Button>
         </ButtonContainer>
         
-
-
-<div>
-<div>
-<div>
         {show && <PrintModal />}
-    </div>
-
-    </div>
-    </div>
-
         </div>
 </div>
         

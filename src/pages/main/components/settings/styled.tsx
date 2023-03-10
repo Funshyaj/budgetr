@@ -25,6 +25,7 @@ position: fixed;
 top: 0;
 right:0;
 left: 0;
+z-index: 99;
 box-shadow: 0 0 10px;
 right: 0;
 display: flex;
