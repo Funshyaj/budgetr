@@ -1,9 +1,10 @@
 import InputForm from "../form-input";
-import { useState } from "react";
+import { useState,useRef } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db1 } from "../../../../db";
 import { Button, ButtonContainer } from "../button/Button";
-
+import PrintModal from "../printer/print-modal";
+import { WhatsappShareButton } from "react-share";
 
 
  const  {FixedBudgetInputs,Analyses} = db1
@@ -13,6 +14,10 @@ const FixedBudget = () => {
     const [fixedAmount, setFixedAmount] = useState<any>('')
     const [analysis, setAnalysis] = useState<string>('')
     const [UserName, setUserName] = useState<string>('')
+    const [show, setShow] = useState(false)
+
+    
+    const componentRef = useRef(null);
 
    
   // live query for inputs data
@@ -100,14 +105,29 @@ const handleAdd = async () =>{
        
         <InputForm  data={data} handleChange={handleChange} handleAdd={handleAdd} handleDelete={handleDelete}/>
       </div>
-        <div className="analysis">
+        <div className="analysis" id="analysis">
             <p>Your total expenses are N{total}</p>
             <p>{analysis}</p>
 
             <ButtonContainer>
-          <Button primary={true}>Download</Button>
-          <Button primary={false}><img src="https://img.icons8.com/windows/32/000000/whatsapp--v1.png"/>Share</Button>
+          <Button onClick={()=>setShow(!show)} primary={true}><img src="https://img.icons8.com/ios/25/null/export.png"/>Export</Button>
+          <Button primary={false}>
+            <img src="https://img.icons8.com/ios/32/000000/whatsapp--v1.png"/>
+          <WhatsappShareButton url='https://funshyaj.github.io/budgetr' title="Budgetr" separator=" -Dont over spend!, use budgetr- ">Share</WhatsappShareButton>
+          </Button>
         </ButtonContainer>
+        
+
+
+<div>
+<div>
+<div>
+        {show && <PrintModal />}
+    </div>
+
+    </div>
+    </div>
+
         </div>
 </div>
         

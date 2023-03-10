@@ -12,7 +12,7 @@ const Welcome = () => {
   const [modal, setModal] = useState<Boolean>(true)
 
 
-     // initialize database only once
+     // function to initialize database only once
 const init = ()=> {
 //   Analyses.toArray().then((arr)=> {
 //     if(arr.length === 0){ 
@@ -73,7 +73,7 @@ const handleChange = (e:React.ChangeEvent<HTMLInputElement>)=>setUserName(e.targ
 
 const handleModal = ()=> setModal(false)
  
-  // function to add User name
+  // function to add User name to database
   const addName = ()=>{
     Analyses.update(0, {UserName: UserName});
     Analysis.update(0, {UserName: UserName});
@@ -90,8 +90,8 @@ const handleModal = ()=> setModal(false)
         <div className='welcome-form'>
           <form onSubmit={(e)=>{
 e.preventDefault()
-// addName();
-// setChange(true);
+addName();
+setChange(true);
 console.log(UserName)}}>
       <input type="text" placeholder="Enter your name" value={UserName} onChange={handleChange} required/>
 <button type='submit'>Proceed</button>

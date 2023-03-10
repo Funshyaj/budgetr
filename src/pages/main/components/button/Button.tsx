@@ -23,8 +23,9 @@ export const Button = styled.button<prop>`
 font-size: 1rem;
 display:flex;
 gap:10px;
+cursor:pointer;
 align-items:center;
-padding:${props => (props.primary ? "20px 30px;" : "12px 30px;")};
+padding:${props => (props.primary ? "16px 30px;" : "12px 30px;")};
 text-align:center;
 background-color:${props => (props.primary ? "hsla(235, 57%, 65%, 1)" : "#25D366")};
 border: none;
