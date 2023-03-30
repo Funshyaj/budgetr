@@ -12,7 +12,10 @@ const InputForm:React.FC<props> = ({data,handleChange,handleAdd,handleDelete}) =
 
 
     return ( <div className='mapped-inputs'>
-
+<div className="labels">
+  <label>Items</label>
+  <label>Price</label>
+</div>
 {/* the inputs  */}
  {data?.map(({name, price ,id},index)=>(
      <div className="inputs" key={index}>

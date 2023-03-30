@@ -1,23 +1,42 @@
-import React, { useRef } from 'react';
+import * as React from "react";
+import { useRef } from "react";
+import { InputsDb,Analysis} from '../../../../db';
 
-export class ComponentToPrint extends React.PureComponent {
-    render() {
+type props ={
+data ?: InputsDb[] ;
+Analyses ?: Analysis[];
+name:string;
+}
+
+export class ComponentToPrint extends React.PureComponent<props>{
+
+ render() {
+
       return (
         <div className='component-to-print'>
-          <h1>Funsho Budget</h1>
+    {/* adding user */}
+  {this.props.Analyses?.map(({UserName},index)=>(
+  <h1 key={index}>{UserName}'s Budget</h1>))}
+  
+  <table>
+     <thead>
+         <tr>
+    <th>Items</th>
+    <th>Price</th>
+  </tr>
+     </thead>
+     <tbody>
+  {this.props.data?.map(({name, price ,id},index)=>(
+<tr key={index}>
+<td>{name}</td>
+<td>N{price}</td>
+</tr>
+    )
+   )}
+     </tbody>
+   </table>
+   
 
-          <table>
-  <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  </table>
         </div>
       );
     }
@@ -28,9 +47,11 @@ export class ComponentToPrint extends React.PureComponent {
 // https://reactjs.org/docs/refs-and-the-dom.html#refs-and-function-components
 // export const ComponentToPrint = React.forwardRef((props, ref) => {
     
-// const componentRef = useRef(null);
-
-// return (
-//       <div ref={ref}>My cool content here!</div>
-//     );
-//   });
+// export const ComponentToPrint = React.forwardRef((props, ref) => {
+//   const { name } = props;
+//   return (
+//     <div className="print-source" ref={ref}>
+//       Number {name}
+//     </div>
+//   );
+// });

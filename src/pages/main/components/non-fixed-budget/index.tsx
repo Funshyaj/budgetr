@@ -60,6 +60,10 @@ const handleChange = async (e:any,id:any)=>{
          Analysis.update(0, {total: total});
          }})
       }
+
+      const printModalDisplay =()=> {
+        setShow(!show)};
+  
   
 
     return ( <div>
@@ -68,8 +72,9 @@ const handleChange = async (e:any,id:any)=>{
     <div className="username-side">
        <h2>Welcome, {UserName}</h2>
        <div className="note">
-          Here you can make a budgegt based on a fixed amount and Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi animi illum totam quas delectus! Sequi eveniet, eligendi inventore assumenda excepturi velit itaque suscipit quaerat nulla vero cupiditate vel perspiciatis minima.
-         </div>
+          Here you can make a budgegt based on a fixed amount <br />
+Take control of your finances with Budgter! Our easy-to-use budgeting tool will help you create a budget that works for you and your family. Easily track your spending, set goals, and set notifications to help keep you on track. Share and collaborate with others to make sure everyone is on the same page. With Budgter, you'll be on your way to financial freedom!  </div>
+
        </div>
     
     <div className="inputs-section">
@@ -81,7 +86,7 @@ const handleChange = async (e:any,id:any)=>{
             <p>Your total expenses are N{total}</p>
 
             <ButtonContainer>
-          <Button onClick={()=>setShow(!show)} primary={true}><img src="https://img.icons8.com/ios/25/null/export.png"/>Export</Button>
+          <Button onClick={()=>printModalDisplay()} primary={true}><img src="https://img.icons8.com/ios/25/null/export.png"/>Export</Button>
           <Button primary={false}>
             <img src="https://img.icons8.com/ios/32/000000/whatsapp--v1.png"/>
           <WhatsappShareButton url='https://funshyaj.github.io/budgetr' title="Budgetr" separator=" -Dont over spend!, use budgetr- ">Share</WhatsappShareButton>
@@ -90,7 +95,8 @@ const handleChange = async (e:any,id:any)=>{
 
 
 
-        {show && <PrintModal />}
+       
+        {show && <PrintModal printModalDisplay={printModalDisplay}/>}
         </div>
     </div>
     </div>);

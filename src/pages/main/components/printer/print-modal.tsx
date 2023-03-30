@@ -1,21 +1,46 @@
 import { useRef } from "react";
+import * as React from "react";
 import ReactToPrint from 'react-to-print';
 import { ComponentToPrint } from "../printer";
 import { Button, ButtonContainer } from "../button/Button";
+import { Analysis, InputsDb } from '../../../../db';
 
-const PrintModal = () => {
+type props ={
+printModalDisplay : ()=>void;
+data ?: InputsDb[] ;
+Analyses ?: Analysis[];
+}
+
+
+// export const ComponentToPrint = React.forwardRef((props, ref) => {
+//   const { name } = props;
+//   return (
+//     <div className="print-source" ref={ref}>
+//       Number {name}
+//     </div>
+//   );
+// });
+
+
+const PrintModal:React.FC<props> = ({printModalDisplay,data,Analyses}) => {
 
     const componentRef = useRef(null);
+    // const componentRef = useRef();
 
     return ( <div className="print-modal">
-        sdmsldn
-
-        <ReactToPrint
+        <div className="print-modal-body">
+          <header>
+            <ReactToPrint
           trigger={() => { return <Button primary={true}>Print as Pdf</Button>}}    
           content={() => componentRef.current}
         />
+        <div onClick={()=>printModalDisplay()}>X</div>
+        
+        </header>
+        
 
-            <ComponentToPrint ref={componentRef} /> 
+            <ComponentToPrint ref={componentRef} name='sara'  data={data} Analyses={Analyses}/> 
+            </div>
     </div> );
 }
  

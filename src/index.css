@@ -183,26 +183,52 @@ text-align: center;
 
 .note{
     display: none;
+    text-align: justify;
 }
 
-/* .print-modal{
+.print-modal{
     position: fixed;
-    background-color: red;
-    display: flex;
     left: 0;
     right: 0;
-    gap: 140px;
-    overflow-y: scroll;
-    top: 0;
+    top: 58px;
+    background: #00000078;
     bottom: 0;
-    padding: 240px 5px 10px;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-} */
-/* .component-to-print{
+    padding: 10px;
+    z-index: 4;
+}
 
-} */
+.print-modal-body{
+    background: white;
+    height: 100%;
+    padding: 20px 10px;
+}
+
+.print-modal-body > header{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px 0px;
+}
+
+
+.print-modal-body > header > div{
+    padding-left: 20px;
+}
+
+.component-to-print{
+border: 1px dotted black;
+height: 100%;
+}
+
+/* table styling */
+table, td, th {
+    border: 1px solid;
+    text-align:left;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
   
 @media only screen and (min-width: 600px) {
 

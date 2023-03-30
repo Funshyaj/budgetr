@@ -21,10 +21,18 @@ transition: 0.3s;}
 color: hsla(235, 57%, 60%, 1);
  background-color: white;}
 
-label{display: flex;
+.labels{display: flex;
     gap: 70px;
     margin-right: 60px;
-    justify-content: flex-start;}
+    justify-content:space-around;
+margin-top: 10px;
+margin-bottom: 10px;}
+
+    .labels> label{
+        font-weight: bold;
+        color: hsla(235, 57%, 60%, 1);
+        font-size: 1.4rem;
+    }
 
 .inputs{
     display: flex;
