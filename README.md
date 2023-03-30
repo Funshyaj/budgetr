@@ -1,5 +1,5 @@
 # Budgetr
-##### [Use App](https://funshyaj.github.io/budgetr)
+##### [Click to use App](https://funshyaj.github.io/budgetr)
 Take control of your finances with Budgter! Our easy-to-use budgeting tool will help you create a budget that works for you. Easily track your spending, set goals, and set notifications to help keep you on track. Share and collaborate with others to make sure everyone is on the same page. With Budgter, you'll be on your way to financial freedom!
 
 
