@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef,useState } from "react";
 import * as React from "react";
 import ReactToPrint from 'react-to-print';
 import { ComponentToPrint } from "../printer";
@@ -25,7 +25,11 @@ Analyses ?: Analysis[];
 const PrintModal:React.FC<props> = ({printModalDisplay,data,Analyses}) => {
 
     const componentRef = useRef(null);
-    // const componentRef = useRef();
+
+    const [time, setTime] = useState(123)
+
+
+
 
     return ( <div className="print-modal">
         <div className="print-modal-body">
