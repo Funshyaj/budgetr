@@ -200,7 +200,6 @@ text-align: center;
 
 .print-modal-body{
     background: white;
-    height: 100%;
     padding: 20px 10px;
    
 }
@@ -218,27 +217,42 @@ text-align: center;
 
 .component-to-print{
 border: 1px dotted black;
-height: 90%;
+height: 100vh;
 position: relative;
+display: flex;
+justify-content: space-between;
+flex-direction: column;
+}
+
+/* head styling */
+.component-to-print > .pdf-head {
+    padding: 40px 5px 0px;
+}
+
+.component-to-print > .pdf-head > div{
+    text-align: center;
 }
 
 /* table styling */
 .component-to-print > table, td, th {
     border: 1px solid;
     text-align:left;
+    padding: 10px;
   }
   
   .component-to-print > table {
-    width: 100%;
+    width: 80vw;
     border-collapse: collapse;
+    margin: 0 auto;
+    padding: 18px;
   }
 
   /* footer in  component to print */
   .component-to-print > footer{
     display: flex;
     justify-content: space-between;
-position: absolute;
-bottom: 0;
+/* position: absolute; */
+/* bottom: 0; */
 width: 100%;
   }
 

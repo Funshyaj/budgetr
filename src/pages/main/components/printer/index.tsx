@@ -40,7 +40,7 @@ export class ComponentToPrint extends React.PureComponent<props>{
   {this.props.data?.map(({name, price ,id},index)=>(
 <tr key={index}>
 <td>{name}</td>
-<td>N{price}</td>
+<td>N {price}</td>
 </tr>
     )
    )}

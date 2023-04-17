@@ -72,7 +72,7 @@ const handleChange = async (e:any,id:any)=>{
     <div className="username-side">
        <h2>Welcome, {UserName}</h2>
        <div className="note">
-          Here you can make a budgegt based on a fixed amount <br />
+          Here you can make a budget based on a fixed amount <br />
 Take control of your finances with Budgter! Our easy-to-use budgeting tool will help you create a budget that works for you and your family. Easily track your spending, set goals, and set notifications to help keep you on track. Share and collaborate with others to make sure everyone is on the same page. With Budgter, you'll be on your way to financial freedom!  </div>
 
        </div>

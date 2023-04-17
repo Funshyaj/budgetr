@@ -47,7 +47,6 @@ const value = e.target.value *1
 
 // change and add up for prices
         if (name ===  'price'){
-
           
         // using the dexie update api to make an update directly to the database
    FixedBudgetInputs.update(id, {price: value});
@@ -113,7 +112,7 @@ const handleAdd = async () =>{
          
          
          <div className="note">
-          Here you can make a budgegt based on a fixed amount <br />
+          Here you can make a budget based on a fixed amount <br />
 Take control of your finances with Budgter! Our easy-to-use budgeting tool will help you create a budget that works for you and your family. Easily track your spending, set goals, and set notifications to help keep you on track. Share and collaborate with others to make sure everyone is on the same page. With Budgter, you'll be on your way to financial freedom!  </div>
          </div>
       <div className="inputs-section">
