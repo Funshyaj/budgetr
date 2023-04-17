@@ -3,12 +3,13 @@ import * as React from "react";
 import ReactToPrint from 'react-to-print';
 import { ComponentToPrint } from "../printer";
 import { Button, ButtonContainer } from "../button/Button";
-import { Analysis, InputsDb } from '../../../../db';
+import { Analyses, Analysis, InputsDb } from '../../../../db';
 
 type props ={
 printModalDisplay : ()=>void;
 data ?: InputsDb[] ;
-Analyses ?: Analysis[];
+Analyses ?: Analyses[];
+Analysis ?: Analysis[];
 }
 
 

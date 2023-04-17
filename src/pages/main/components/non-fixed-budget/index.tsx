@@ -17,7 +17,8 @@ const NonFixedBudget = () => {
   
 //   querying data for fast reflection
   const data  = useLiveQuery(() => NonFixedBudgetInputs.toArray() ,[])
- 
+ // live query analysis data
+ const ana  = useLiveQuery(() => Analysis.toArray())
 
 useLiveQuery(() => Analysis.toArray().then((arr)=> {
       setTotal(arr[0].total)
@@ -96,7 +97,7 @@ Take control of your finances with Budgter! Our easy-to-use budgeting tool will 
 
 
        
-        {show && <PrintModal printModalDisplay={printModalDisplay}/>}
+        {show && <PrintModal printModalDisplay={printModalDisplay} data={data} Analysis={ana}/>}
         </div>
     </div>
     </div>);

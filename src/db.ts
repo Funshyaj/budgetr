@@ -1,9 +1,15 @@
 import Dexie, { Table } from 'dexie';
 
-export interface Analysis {          
+export interface Analyses {          
   id?:0;
   fixedInput: number;
   analysis:string;
+  total:number;
+  UserName:'';
+}
+
+export interface Analysis {          
+  id?:0;
   total:number;
   UserName:'';
 }
@@ -17,7 +23,7 @@ export interface InputsDb {
 
 class MySubClassedDexie1 extends Dexie {
   FixedBudgetInputs!: Table<InputsDb>; 
-  Analyses!: Table<Analysis>; 
+  Analyses!: Table<Analyses>; 
 
   constructor() {
     super('FixedBudgetDatabase');
@@ -33,11 +39,7 @@ class MySubClassedDexie1 extends Dexie {
 
 class MySubClassedDexie2 extends Dexie {
   NonFixedBudgetInputs!: Table<InputsDb>; 
-  Analysis!: Table<{
-    id?:0;
-    total:number;
-    UserName:'';
-  }>
+  Analysis!:  Table<Analysis>; 
 
   constructor() {
     super('NonFixedBudgetDatabase');

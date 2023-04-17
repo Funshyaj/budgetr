@@ -1,10 +1,11 @@
 import * as React from "react";
 import { useRef } from "react";
-import { InputsDb,Analysis} from '../../../../db';
+import { InputsDb,Analysis,Analyses} from '../../../../db';
 
 type props ={
 data ?: InputsDb[] ;
-Analyses ?: Analysis[];
+Analyses ?: Analyses[];
+Analysis ?: Analysis[];
 name:string;
 }
 
@@ -25,6 +26,17 @@ export class ComponentToPrint extends React.PureComponent<props>{
   <h3>Total expense are : {total}</h3>
   <h3>{analysis}</h3>
   </div>
+  </div>
+  ))}
+
+     {/* adding user's name*/}
+  {this.props.Analysis?.map(({UserName,total},index)=>(
+  <div className="pdf-head" key={index}>
+  <h1>{UserName}'s Budget</h1>
+
+  <div>
+  <h3>Total expense are : {total}</h3>
+ </div>
   </div>
   ))}
 
