@@ -6,7 +6,8 @@ type props ={
 data ?: InputsDb[] ;
 Analyses ?: Analyses[];
 Analysis ?: Analysis[];
-name:string;
+date:string;
+time:string;
 }
 
 export class ComponentToPrint extends React.PureComponent<props>{
@@ -23,7 +24,7 @@ export class ComponentToPrint extends React.PureComponent<props>{
   
   {fixedInput ? 
   <h3>Fixed Amount : {fixedInput}</h3>: " "}
-  <h3>Total expense are : {total}</h3>
+  <h3>Total expenses are : {total}</h3>
   <h3>{analysis}</h3>
   </div>
   </div>
@@ -35,7 +36,7 @@ export class ComponentToPrint extends React.PureComponent<props>{
   <h1>{UserName}'s Budget</h1>
 
   <div>
-  <h3>Total expense are : {total}</h3>
+  <h3>Total expenses are : {total}</h3>
  </div>
   </div>
   ))}
@@ -64,7 +65,7 @@ export class ComponentToPrint extends React.PureComponent<props>{
     <p>Created with Budgetr</p>
     <p>funshyaj.github.io/budgter</p>
   </div>
-  <div className="timestamp">Created at {this.props.name}</div>
+  <div className="timestamp">Created on {this.props.date}<br/>at {this.props.time}</div>
   
 </footer>
         </div>

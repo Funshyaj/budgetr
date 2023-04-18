@@ -13,24 +13,29 @@ Analysis ?: Analysis[];
 }
 
 
-// export const ComponentToPrint = React.forwardRef((props, ref) => {
-//   const { name } = props;
-//   return (
-//     <div className="print-source" ref={ref}>
-//       Number {name}
-//     </div>
-//   );
-// });
 
-
-const PrintModal:React.FC<props> = ({printModalDisplay,data,Analyses}) => {
+const PrintModal:React.FC<props> = ({printModalDisplay,data,Analyses,Analysis}) => {
 
     const componentRef = useRef(null);
 
-    const [time, setTime] = useState(123)
+    const [date, setDate] = useState('date')
+    const [time, setTime] = useState('time')
 
 
+const getDate = ()=>{
+  let date = new Date().toDateString()
+  let hour = new Date().getHours();
+  let minutes = new Date().getMinutes();
+  let stamp = 'am';
+  // making sure the stamp is correct
+  if (hour>=12 && hour <= 23){
+ stamp = 'pm'
+  }
+  let time = hour + ':' + minutes +' '+ stamp;
+  setDate(date)
+  setTime(time)
 
+}
 
     return ( <div className="print-modal">
         <div className="print-modal-body">
@@ -44,7 +49,7 @@ const PrintModal:React.FC<props> = ({printModalDisplay,data,Analyses}) => {
         </header>
         
 
-            <ComponentToPrint ref={componentRef} name='sara'  data={data} Analyses={Analyses}/> 
+            <ComponentToPrint ref={componentRef} date={date} time={time}  data={data} Analyses={Analyses} Analysis={Analysis}/> 
             </div>
     </div> );
 }

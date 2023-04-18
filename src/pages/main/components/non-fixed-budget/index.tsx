@@ -37,7 +37,12 @@ const handleChange = async (e:any,id:any)=>{
     addUp()
   }
           else if (name === 'name'){
-     NonFixedBudgetInputs.update(id, {name: value});
+          // ensure the first letter is capital
+const firstLetter = value.charAt(0).toUpperCase();
+const remainingLetters = value.slice(1)
+const capitalizedWord = firstLetter + remainingLetters
+            // update database
+     NonFixedBudgetInputs.update(id, {name: capitalizedWord});
       }
   }
   
