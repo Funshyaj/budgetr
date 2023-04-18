@@ -16,6 +16,10 @@ const FixedBudget = () => {
     const [UserName, setUserName] = useState<string>('')
     const [show, setShow] = useState(false)
 
+    // states for time and date
+    const [date, setDate] = useState('date')
+    const [time, setTime] = useState('time')
+
   
    
   // live query for inputs data
@@ -96,14 +100,24 @@ const handleAdd = async () =>{
        }})
     }
 
+    
+const getDate = ()=>{
+  let date = new Date().toDateString()
+  let time = new Date().toLocaleTimeString()
+  setDate(date)
+  setTime(time)
+
+}
+
     const printModalDisplay =()=> {
+      getDate()
       setShow(!show)};
 
 
     return ( <div>
 
       
-{show && <PrintModal printModalDisplay={printModalDisplay} data={data} Analyses={ana}/>}
+{show && <PrintModal printModalDisplay={printModalDisplay} data={data} Analyses={ana} time={time} date={date}/>}
 
       <div className='input'>
 

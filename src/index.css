@@ -216,10 +216,10 @@ text-align: center;
     padding-left: 20px;
     font-size: 24px;
     font-weight: 700;
+    cursor:pointer;
 }
 
 .component-to-print{
-border: 1px dotted black;
 height: 100vh;
 position: relative;
 display: flex;
@@ -252,6 +252,10 @@ flex-direction: column;
     border-collapse: collapse;
     margin: 0 auto;
     padding: 18px;
+  }
+
+  tbody tr:nth-child(even) th {
+    background-color: #25c;
   }
 
   /* footer in  component to print */

@@ -15,6 +15,11 @@ const NonFixedBudget = () => {
     const [UserName, setUserName] = useState<string>('')
     const [show, setShow] = useState(false)
   
+    // states for time and date
+    const [date, setDate] = useState('date')
+    const [time, setTime] = useState('time')
+
+
 //   querying data for fast reflection
   const data  = useLiveQuery(() => NonFixedBudgetInputs.toArray() ,[])
  // live query analysis data
@@ -67,7 +72,16 @@ const capitalizedWord = firstLetter + remainingLetters
          }})
       }
 
-      const printModalDisplay =()=> {
+      const getDate = ()=>{
+        let date = new Date().toDateString()
+        let time = new Date().toLocaleTimeString()
+        setDate(date)
+        setTime(time)
+      
+      }
+      
+          const printModalDisplay =()=> {
+            getDate()
         setShow(!show)};
   
   
@@ -102,7 +116,7 @@ Take control of your finances with Budgter! Our easy-to-use budgeting tool will 
 
 
        
-        {show && <PrintModal printModalDisplay={printModalDisplay} data={data} Analysis={ana}/>}
+        {show && <PrintModal printModalDisplay={printModalDisplay} data={data} Analysis={ana}  time={time} date={date}/>}
         </div>
     </div>
     </div>);
