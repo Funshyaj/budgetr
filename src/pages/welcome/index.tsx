@@ -3,8 +3,8 @@ import { Navigate } from 'react-router-dom';
 import { db1,db2 } from '../../db';
 import Modal from './components/modal';
 
- const  {Analyses} = db1
-const  {Analysis} = db2
+ const  {FixedBudgetInputs, Analyses} = db1
+const  {NonFixedBudgetInputs, Analysis} = db2
 
 const Welcome = () => {
   const [UserName, setUserName] = useState<string>('')
@@ -14,58 +14,58 @@ const Welcome = () => {
 
      // function to initialize database only once
 const init = ()=> {
-//   Analyses.toArray().then((arr)=> {
-//     if(arr.length === 0){ 
-//       Analyses.put({
-//         id:0,
-//         fixedInput: 0,
-//         analysis: "",
-//         total: 0,
-//         UserName:''
-//       });
-//       console.log('local database has been initiallized ')
-//      }
+  Analyses.toArray().then((arr)=> {
+    if(arr.length === 0){ 
+      Analyses.put({
+        id:0,
+        fixedInput: 0,
+        analysis: "",
+        total: 0,
+        UserName:''
+      });
+      console.log('local database has been initiallized ')
+     }
 
-//      else if(arr.length > 0){
-//       console.log('db already exist')
-//     } 
-//   })
+     else if(arr.length > 0){
+      console.log('db already exist')
+    } 
+  })
 
-//   FixedBudgetInputs.toArray().then((arr)=> {
-//     if(arr.length === 0){ 
-//       FixedBudgetInputs.bulkPut([{
-//         name:'',
-//         price:0
-//       },
-//       {
-//         name:'',
-//         price:0
-//       }]);
-//      }
-//   });
+  FixedBudgetInputs.toArray().then((arr)=> {
+    if(arr.length === 0){ 
+      FixedBudgetInputs.bulkPut([{
+        name:'',
+        price:0
+      },
+      {
+        name:'',
+        price:0
+      }]);
+     }
+  });
 
-//   Analysis.toArray().then((arr)=> {
-//     if(arr.length === 0){ 
-//       Analysis.put({
-//         id:0,
-//         total: 0,
-//         UserName:''
-//       });
-//      }
-//   });
+  Analysis.toArray().then((arr)=> {
+    if(arr.length === 0){ 
+      Analysis.put({
+        id:0,
+        total: 0,
+        UserName:''
+      });
+     }
+  });
 
-// NonFixedBudgetInputs.toArray().then((arr)=> {
-// if(arr.length === 0){ 
-// NonFixedBudgetInputs.bulkPut([{
-//   name:'',
-//   price:0
-// },
-// {
-//   name:'',
-//   price:0
-// }]);
-// }
-// });
+NonFixedBudgetInputs.toArray().then((arr)=> {
+if(arr.length === 0){ 
+NonFixedBudgetInputs.bulkPut([{
+  name:'',
+  price:0
+},
+{
+  name:'',
+  price:0
+}]);
+}
+});
 
 }
 
@@ -76,7 +76,7 @@ const handleModal = ()=> setModal(false)
   // function to add User name to database
   const addName = ()=>{         
     
-    // ensure the first letter is capital
+    // ensure the first letter is cap
     let firstLetter = UserName.charAt(0).toUpperCase();
     let remainingLetters = UserName.slice(1)
     let capitalizedWord = firstLetter + remainingLetters
