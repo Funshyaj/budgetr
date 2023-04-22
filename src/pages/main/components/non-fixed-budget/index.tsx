@@ -92,8 +92,8 @@ const capitalizedWord = firstLetter + remainingLetters
     <div className="username-side">
        <h2>Welcome, {UserName}</h2>
        <div className="note">
-          Here you can make a budget based on a fixed amount <br />
-Take control of your finances with Budgter! Our easy-to-use budgeting tool will help you create a budget that works for you and your family. Easily track your spending, set goals, and set notifications to help keep you on track. Share and collaborate with others to make sure everyone is on the same page. With Budgter, you'll be on your way to financial freedom!  </div>
+          Here you can budget a list of things you plan to buy.<br/>
+So, take control of your finances with Budgter! Our easy-to-use budgeting tool will help you create a budget that works for you and your family. Easily track your spending, set goals to help keep you on track. Share and collaborate with others to make sure everyone is on the same page. With Budgter, you'll be on your way to financial freedom!  </div>
 
        </div>
     
@@ -106,9 +106,9 @@ Take control of your finances with Budgter! Our easy-to-use budgeting tool will 
             <p>Your total expenses are N{total}</p>
 
             <ButtonContainer>
-          <Button onClick={()=>printModalDisplay()} primary={true}><img src="https://img.icons8.com/ios/25/null/export.png"/>Export</Button>
+          <Button onClick={()=>printModalDisplay()} primary={true}><img src="https://img.icons8.com/ios/25/null/export.png " alt="share_button_img"/>Export</Button>
           <Button primary={false}>
-            <img src="https://img.icons8.com/ios/32/000000/whatsapp--v1.png"/>
+            <img src="https://img.icons8.com/ios/32/000000/whatsapp--v1.png" alt="whatsapp_logo_img"/>
           <WhatsappShareButton url='https://funshyaj.github.io/budgetr' title="Budgetr" separator=" -Dont over spend!, use budgetr- ">Share</WhatsappShareButton>
           </Button>
         </ButtonContainer>

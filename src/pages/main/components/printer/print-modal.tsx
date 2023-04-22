@@ -1,4 +1,4 @@
-import { useRef,useState } from "react";
+import { useRef } from "react";
 import * as React from "react";
 import ReactToPrint from 'react-to-print';
 import { ComponentToPrint } from "../printer";
@@ -20,8 +20,6 @@ const PrintModal:React.FC<props> = ({printModalDisplay,data,Analyses,Analysis,da
 
     const componentRef = useRef(null);
 
-
-
 //   let hour = new Date().getHours();
 //   let minutes = new Date().getMinutes();
 //   let stamp = 'am';
@@ -30,11 +28,7 @@ const PrintModal:React.FC<props> = ({printModalDisplay,data,Analyses,Analysis,da
 //  stamp = 'pm'
 //   }
 //   let timer = hour + ':' + minutes +' '+ stamp;
-const go = ()=>{
-let answer = 1 + 1;
-let  anotherAnswer = answer + 1;
-let finalAnswer = anotherAnswer + 10;
-}
+
 
     return ( <div className="print-modal">
         <div className="print-modal-body">

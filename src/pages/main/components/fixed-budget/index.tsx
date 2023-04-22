@@ -1,5 +1,5 @@
 import InputForm from "../form-input";
-import { useState,useRef } from "react";
+import { useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db1 } from "../../../../db";
 import { Button, ButtonContainer } from "../button/Button";
@@ -127,7 +127,7 @@ const getDate = ()=>{
          
          <div className="note">
           Here you can make a budget based on a fixed amount <br />
-Take control of your finances with Budgter! Our easy-to-use budgeting tool will help you create a budget that works for you and your family. Easily track your spending, set goals, and set notifications to help keep you on track. Share and collaborate with others to make sure everyone is on the same page. With Budgter, you'll be on your way to financial freedom!  </div>
+So, take control of your finances with Budgter! Our easy-to-use budgeting tool will help you create a budget that works for you and your family. Easily track your spending, set goals to help keep you on track. Share and collaborate with others to make sure everyone is on the same page. With Budgter, you'll be on your way to financial freedom!  </div>
          </div>
       <div className="inputs-section">
         <div className="fixed-input">
@@ -142,9 +142,9 @@ Take control of your finances with Budgter! Our easy-to-use budgeting tool will 
             <p>{analysis}</p>
 
             <ButtonContainer>
-          <Button onClick={()=>printModalDisplay()} primary={true}><img src="https://img.icons8.com/ios/25/null/export.png"/>Export</Button>
+          <Button onClick={()=>printModalDisplay()} primary={true}><img src="https://img.icons8.com/ios/25/null/export.png" alt="share_button_img"/>Export</Button>
           <Button primary={false}>
-            <img src="https://img.icons8.com/ios/32/000000/whatsapp--v1.png"/>
+            <img src="https://img.icons8.com/ios/32/000000/whatsapp--v1.png" alt="whatsapp_button_logo"/>
           <WhatsappShareButton url='https://funshyaj.github.io/budgetr' title="Budgetr" separator=" -Dont over spend!, use budgetr- ">Share</WhatsappShareButton>
           </Button>
         </ButtonContainer>

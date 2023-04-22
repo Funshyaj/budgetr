@@ -3,8 +3,8 @@ import { Navigate } from 'react-router-dom';
 import { db1,db2 } from '../../db';
 import Modal from './components/modal';
 
- const  {FixedBudgetInputs, Analyses} = db1
-const  {NonFixedBudgetInputs, Analysis} = db2
+ const  {Analyses} = db1
+const  {Analysis} = db2
 
 const Welcome = () => {
   const [UserName, setUserName] = useState<string>('')
@@ -74,9 +74,15 @@ const handleChange = (e:React.ChangeEvent<HTMLInputElement>)=>setUserName(e.targ
 const handleModal = ()=> setModal(false)
  
   // function to add User name to database
-  const addName = ()=>{
-    Analyses.update(0, {UserName: UserName});
-    Analysis.update(0, {UserName: UserName});
+  const addName = ()=>{         
+    
+    // ensure the first letter is capital
+    let firstLetter = UserName.charAt(0).toUpperCase();
+    let remainingLetters = UserName.slice(1)
+    let capitalizedWord = firstLetter + remainingLetters
+
+    Analyses.update(0, {UserName: capitalizedWord});
+    Analysis.update(0, {UserName: capitalizedWord});
     } 
 
 
